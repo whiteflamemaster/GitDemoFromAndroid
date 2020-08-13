@@ -5,23 +5,25 @@ import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import android.view.Menu
 import android.view.MenuItem
+import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var myViewModel:MyViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        myViewModel=ViewModelProvider(this).get(MyViewModel::class.java)
         setContentView(R.layout.activity_main)
-        textView.text="${myViewModel.number}"
-        buttonAdd.setOnClickListener { textView.text="${++(myViewModel.number)}" }
-        buttonSub.setOnClickListener { textView.text="${--(myViewModel.number)}" }
+        myViewModel=ViewModelProvider(this).get(MyViewModel::class.java)
+        myViewModel.numberLivadata.observe(this, Observer {
+            textView.text="${it}"
+        })
+        buttonAdd.setOnClickListener { myViewModel.add(1) }
+        buttonSub.setOnClickListener { myViewModel.add(-1) }
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if(item.itemId==R.id.Mreset){
-myViewModel.number=0
-            textView.text="${myViewModel.number}"
+        myViewModel.reset()
         }
         return super.onOptionsItemSelected(item)
     }

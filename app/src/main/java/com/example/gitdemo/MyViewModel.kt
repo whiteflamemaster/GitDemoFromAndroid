@@ -13,5 +13,4 @@ class MyViewModel:ViewModel() {
     fun reset(){
         _number.value=0
     }
-    var number=0
 }
