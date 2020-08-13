@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         })
         buttonAdd.setOnClickListener { myViewModel.add(1) }
         buttonSub.setOnClickListener { myViewModel.add(-1) }
+        //something to explain :balabala...
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
