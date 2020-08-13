@@ -1,0 +1,36 @@
+Index: app/src/main/java/com/example/gitdemo/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.gitdemo\r\n\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport kotlinx.android.synthetic.main.activity_main.*\r\n\r\nclass MainActivity : AppCompatActivity() {\r\n    private var number = 0\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n        textView.text=\"$number\"\r\n        buttonAdd.setOnClickListener { textView.text=\"${++number}\" }\r\n        buttonSub.setOnClickListener { textView.text=\"${--number}\" }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/example/gitdemo/MainActivity.kt	(revision 9ec12db06dd8836e6ac6dd0986f35721fb2c8a37)
++++ app/src/main/java/com/example/gitdemo/MainActivity.kt	(date 1597224960380)
+@@ -2,6 +2,8 @@
+ 
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
++import android.view.Menu
++import android.view.MenuItem
+ import kotlinx.android.synthetic.main.activity_main.*
+ 
+ class MainActivity : AppCompatActivity() {
+@@ -13,4 +15,16 @@
+         buttonAdd.setOnClickListener { textView.text="${++number}" }
+         buttonSub.setOnClickListener { textView.text="${--number}" }
+     }
++
++    override fun onOptionsItemSelected(item: MenuItem): Boolean {
++        if(item.itemId==R.id.Mreset){
++
++        }
++        return super.onOptionsItemSelected(item)
++    }
++
++    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
++        menuInflater.inflate(R.menu.menu,menu)
++        return super.onCreateOptionsMenu(menu)
++    }
+ }
+\ No newline at end of file
